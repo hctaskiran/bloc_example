@@ -1,0 +1,21 @@
+{
+    "contacts": {
+        "contactsTitle": "Kişiler",
+        "addContact": "Kişi Ekle"
+    },
+    "inputs": {
+        "enterName": "İsim girin",
+        "enterPhone": "Telefon numarası girin"
+    },
+    "errors": {
+        "nameError": "İsim yalnızca harf içermelidir.",
+        "phoneError": "Telefon numarası yalnızca rakam içermelidir.",
+        "failed": "Başarısız oldu, girilen bilgileri kontrol edip tekrar deneyin.",
+        "success": "Kişi ekleme başarılı."
+    },
+    "details": {
+        "detailsTitle": "Kişi Detayları",
+        "name": "İsim",
+        "phone": "Telefon Numarası"
+    }
+}

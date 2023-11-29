@@ -1,8 +1,11 @@
 // ignore_for_file: avoid_print
+import 'package:bloc_pattern_flutter_ornek/constants.dart';
 import 'package:bloc_pattern_flutter_ornek/cubit/home_page_cubit.dart';
 import 'package:bloc_pattern_flutter_ornek/entity/person.dart';
+import 'package:bloc_pattern_flutter_ornek/init/lang/language_manager.dart';
+import 'package:bloc_pattern_flutter_ornek/views/person_add.dart';
 import 'package:bloc_pattern_flutter_ornek/views/person_detail.dart';
-import 'package:bloc_pattern_flutter_ornek/views/person_sign_up.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,10 +27,31 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text(
-        "Contacts App",
-        style: TextStyle(color: Colors.white),
-      )),
+        title: Text(Translations().contacts),
+        actions: <Widget>[
+          Padding(
+              padding: PaddingConst().right10,
+              child: DropdownButton(
+                  padding: PaddingConst().all5,
+                  isDense: true,
+                  hint: appBarIcons[0],
+                  underline: const SizedBox(),
+                  items: AppLanguages.Languages.asMap()
+                      .map((index, value) => MapEntry(
+                          index,
+                          DropdownMenuItem(
+                            value: value,
+                            child: Text(value),
+                          )))
+                      .values
+                      .toList(),
+                  onChanged: (newValue) {
+                    int selectedIndex = AppLanguages.Languages.indexOf(newValue as String);
+                    context.locale = AppLanguages.supportedLanguages[selectedIndex];
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomePage()));
+                  }))
+        ],
+      ),
       body: BlocBuilder<HomePageCubit, List<Person>>(
         builder: (context, personList) {
           if (personList.isNotEmpty) {
@@ -38,9 +62,8 @@ class _HomePageState extends State<HomePage> {
                 return ListTile(
                     title: Text(person.person_name),
                     subtitle: Text(person.person_phone),
-                    trailing: const Icon(Icons.chevron_right),
+                    trailing: contactIcons[2],
                     onTap: () {
-                      //Navigation to DetailPage
                       Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -61,7 +84,7 @@ class _HomePageState extends State<HomePage> {
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpPage()));
           },
-          child: const Icon(Icons.add)),
+          child: contactIcons[3]),
     );
   }
 }

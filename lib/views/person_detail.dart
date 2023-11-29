@@ -1,3 +1,5 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:bloc_pattern_flutter_ornek/constants.dart';
 import 'package:bloc_pattern_flutter_ornek/entity/person.dart';
 import 'package:flutter/material.dart';
 
@@ -11,15 +13,15 @@ class DetailPage extends StatelessWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: const Text(
-            "Detail",
-            style: TextStyle(color: Colors.white),
-          ),
+          title: AnimatedTextKit(
+              repeatForever: true,
+              pause: DurationConst().sec1,
+              animatedTexts: [FadeAnimatedText(Translations().detail)]),
         ),
         body: ListView(
           children: [
             Image.network(
-              "https://avatars.githubusercontent.com/u/47645376?v=4",
+              "https://picsum.photos/200/200",
               fit: BoxFit.fill,
               loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
                 if (loadingProgress == null) return child;
@@ -33,19 +35,19 @@ class DetailPage extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.person),
+              leading: contactIcons[0],
               title: Text(
                 person.person_name.toUpperCase(),
               ),
-              subtitle: const Text("Name"),
+              subtitle: Text(Translations().name),
               onTap: () {},
             ),
             ListTile(
-              leading: const Icon(Icons.phone),
+              leading: contactIcons[1],
               title: Text(
                 person.person_phone,
               ),
-              subtitle: const Text("Phone Number"),
+              subtitle: Text(Translations().phone),
               onTap: () {},
             )
           ],

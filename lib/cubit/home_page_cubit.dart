@@ -2,7 +2,7 @@
 
 import 'package:bloc/bloc.dart';
 import 'package:bloc_pattern_flutter_ornek/entity/person.dart';
-import 'package:bloc_pattern_flutter_ornek/repository/persons_dao_repository.dart';
+import 'package:bloc_pattern_flutter_ornek/repos/persons_dao_repository.dart';
 
 class HomePageCubit extends Cubit<List<Person>> {
   HomePageCubit() : super(<Person>[]);
@@ -22,4 +22,5 @@ class HomePageCubit extends Cubit<List<Person>> {
 
 class MyAppStates {
   bool isError = false;
+  bool isNotEmpty = false;
 }

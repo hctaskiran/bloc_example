@@ -24,14 +24,14 @@ class _SignupViewState extends State<SignUpPage> {
     return Scaffold(
       appBar: AppBar(
         title: AnimatedTextKit(
+          repeatForever: true,
+          pause: DurationConst().sec1,
           animatedTexts: [
             TypewriterAnimatedText(
-              'Sign Up',
-              speed: const Duration(milliseconds: 120),
+              Translations().addContact,
+              speed: DurationConst().ms120,
             ),
           ],
-          pause: const Duration(seconds: 3),
-          repeatForever: true,
         ),
       ),
       body: Center(
@@ -40,17 +40,13 @@ class _SignupViewState extends State<SignUpPage> {
           child: Column(
             children: [
               const SizedBox(height: 20),
-              Icon(
-                Icons.account_circle_sharp,
-                size: 150,
-                color: ColorConst().amber,
-              ),
+              contactIcons[4],
               const SizedBox(height: 60),
               TextField(
                 controller: Name,
                 decoration: InputDecoration(
-                  prefixIcon: signUpIcons[0],
-                  hintText: 'Enter a Name',
+                  prefixIcon: contactIcons[0],
+                  hintText: Translations().inputName,
                   border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                 ),
               ),
@@ -59,8 +55,8 @@ class _SignupViewState extends State<SignUpPage> {
                 keyboardType: TextInputType.phone,
                 controller: Phone,
                 decoration: InputDecoration(
-                  prefixIcon: signUpIcons[1],
-                  hintText: 'Enter a Phone Number',
+                  prefixIcon: contactIcons[1],
+                  hintText: Translations().inputPhone,
                   border: const OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50))),
                 ),
               ),
@@ -73,31 +69,19 @@ class _SignupViewState extends State<SignUpPage> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         backgroundColor: ColorConst().red800,
-                        content: const Text("Process failed. Please check the information you entered."),
-                        action: SnackBarAction(
-                          backgroundColor: ColorConst().white,
-                          label: "Try Again",
-                          textColor: ColorConst().blue,
-                          onPressed: () {},
-                        ),
+                        content: Text(Translations().failed),
                       ),
                     );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         backgroundColor: ColorConst().green700,
-                        content: const Text("Process successfuly completed."),
-                        action: SnackBarAction(
-                          backgroundColor: ColorConst().white,
-                          textColor: ColorConst().blue,
-                          label: "OK",
-                          onPressed: () {},
-                        ),
+                        content: Text(Translations().success),
                       ),
                     );
                   }
                 },
-                child: const Text('Sign Up!'),
+                child: Text(Translations().addContact),
               )
             ],
           ),

@@ -1,0 +1,21 @@
+{
+    "contacts": {
+        "contactsTitle": "Contacts",
+        "addContact": "Add Contact"
+    },
+    "inputs": {
+        "enterName": "Enter a Name",
+        "enterPhone": "Enter a Phone Number"
+    },
+    "errors": {
+        "nameError": "Name should contain only letters.",
+        "phoneError": "Phone number should contain only numbers.",
+        "failed": "Process failed. Please check the information you entered.",
+        "success": "Successfully added contact."
+    },
+    "details": {
+        "detailsTitle": "Details",
+        "name": "Name",
+        "phone": "Phone Number"
+    }
+}

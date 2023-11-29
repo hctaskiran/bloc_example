@@ -7,7 +7,7 @@ class PersonResponse {
 
   Map<String, dynamic> toJson() {
     return {
-      'filmler': people,
+      'kisiler': people,
     };
   }
 
